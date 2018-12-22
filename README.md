@@ -2,7 +2,7 @@
 
 This was a project I created a while back after a class on processing raw UNIX input, and was heavily influenced by the fact that I was researching Function pointers at the time.  I originally hosted it at https://pastebin.com/FVvHieRw to be included on my resume, but looking back years later that was a mistake as I didn't make my ownership obvious and I can't remove it, but oh well.  It's now hosted on github permanently and may be improved upon to further differentiate from the unclaimable original.
 
-The state machine is callback based and looks to match the current character read with a function.  Based on the result of that function (true/false hence binary) the machine either moves it's current state to the left node or right node.  The next character to come into the machine will then be handled by the `match` function for the newly selected node.  This was used to print text the user was typing including the arrow keys (detection of arrow keys was the goal of the BSM) following these rules:
+The state machine is callback based and looks to match the current read character with a function.  Based on the result of that function (true/false hence binary) the machine performs an action and either stays on the current state, moves to the next one, or resets to the root state.  The next character to come into the machine will then be handled by the `match` function for the newly selected state.  This was used to print text the user was typing including the arrow keys (detection of arrow keys was the goal of the BSM) following these rules:
 
  - ESC is always the first character to come in if it's an arrow.
  - \[ is always the second if it's an arrow.

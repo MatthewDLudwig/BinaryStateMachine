@@ -7,7 +7,7 @@ The state machine is callback based and looks to match the current read characte
  - ESC is always the first character to come in if it's an arrow.
  - \[ is always the second if it's an arrow.
  - A, B, C, or D then follows and that combination of 3 chars represents an arrow key.
- - If a non arrow related character is encountered, or encountered at the incorrect state, simply print the character.
+ - If a non arrow related character is encountered, or encountered at the incorrect state, simply print the character and go back to the root state (looking for ESC).
 
 In the above case, if ESC was seen first but then followed by something other than a \[, `match_bracket` would return false, the character would be printed (not the ESC), and then the current state would be set to the ROOT_STATE of the machine.  Keep in mind the left node is defined first in addState so `printChar, ROOTSTATE` refers to what should be done if `match_bracket` returns false.  I'm also not sure why I referred to `ROOTSTATE`, `NEXTSTATE`, and `STAYSTATE` as **masks** when they're clearly **commands** to the machine.
 
